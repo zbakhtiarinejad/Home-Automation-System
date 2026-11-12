@@ -1,6 +1,6 @@
 # Automated Smart Home & Environmental Control System
 
-# Automated Smart Home & Environmental Control System
+This project is an automated smart home system that manages room lighting and temperature without manual switches:   Senses the Environment: It constantly checks three things in a room: whether someone is moving around (using a PIR motion sensor), how bright or dark it is (using a light sensor/photoresistor), and how warm it is (using a TMP36 temperature sensor).   Makes Automated Decisions: An Arduino Uno microcontroller acts as the brain, reading those sensors to decide when appliances are needed. For example, it can turn on a light when it detects movement in a dark room, or turn on a cooling fan (represented by the DC motor) when the room gets too hot.   Safely Controls Appliances: Because appliances need more electrical power than the Arduino can safely handle directly, the Arduino triggers two relays (electronic switches) connected to a separate power supply to safely turn the light bulb and motor on or off.   Displays Live Updates: A small 16x2 LCD screen shows real-time information, such as the current room temperature and whether the light or fan is currently running.  
 
 An Arduino-based home automation prototype designed and simulated in Tinkercad Circuits. The system monitors room occupancy, ambient light, and temperature to automatically control household lighting and cooling while displaying live telemetry on an LCD screen.
 
