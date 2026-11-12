@@ -1,32 +1,34 @@
-# Home-Automation-System
-This smart home system uses an Arduino microcontroller and sensors to automatically monitor a room's temperature, light levels, and motion. Depending on the conditions, it automatically switches appliances like a lamp and cooling fan on or off while displaying live status updates on a small screen.
+# Automated Smart Home & Environmental Control System
 
-## Hardware Architecture
-* **Microcontroller:** Arduino Uno (ATmega328P)[cite: 1]
-* **Sensors (Inputs):**
-  * **PIR Motion Sensor:** Detects human presence and room occupancy[cite: 1].
-  * **Photoresistor (LDR) + Voltage Divider:** Measures ambient light levels[cite: 1].
-  * **TMP36 Temperature Sensor:** Captures real-time ambient thermal data[cite: 1].
-* **Actuators & Power Switching (Outputs):**
-  * **2x SPDT Relays:** Opto-isolated/electromechanical switching for high-power loads[cite: 1].
-  * **Incandescent Light Bulb:** Simulates automated room lighting[cite: 1].
-  * **DC Motor:** Simulates an automated HVAC/cooling fan load[cite: 1].
-  * **External Benchtop Power Supply:** Delivers dedicated power to the switched loads[cite: 1].
-* **User Interface:**
-  * **16x2 Character LCD:** Displays live sensor readings and appliance status[cite: 1].
-  * **10kΩ Potentiometer:** Adjusts LCD screen contrast[cite: 1].
+# Automated Smart Home & Environmental Control System
+
+An Arduino-based home automation prototype designed and simulated in Tinkercad Circuits. The system monitors room occupancy, ambient light, and temperature to automatically control household lighting and cooling while displaying live telemetry on an LCD screen.
 
 ---
 
-## System Logic & Operation
-1. **Environmental Polling:** The Arduino reads analog voltage signals from the TMP36 temperature sensor and LDR, alongside digital high/low interrupts from the PIR motion sensor[cite: 1].
-2. **Automated Load Switching:** 
-   * **Lighting Control:** When motion is detected and ambient light drops below a set threshold, the microcontroller energizes the first SPDT relay to switch on the light bulb[cite: 1].
-   * **Thermal Control:** When the room temperature exceeds a target threshold (or occupancy is active), the microcontroller triggers the second SPDT relay to power the DC cooling fan[cite: 1].
-3. **Live Telemetry:** Sensor values and active relay states (`ON`/`OFF`) are formatted and printed to the 16x2 LCD in real time[cite: 1].
+## System Architecture
+
+| Component Category | Hardware Used | Role in System |
+| :--- | :--- | :--- |
+| **Microcontroller** | Arduino Uno (ATmega328P) | Central controller processing sensor inputs and driving outputs |
+| **Sensors** | PIR Motion Sensor, Photoresistor (LDR), TMP36 | Detects occupancy, ambient light intensity, and room temperature |
+| **Switching & Power** | 2x SPDT Relays, Benchtop Power Supply | Isolates 5V logic from higher-power actuator loads |
+| **Actuators** | Light Bulb, DC Motor | Simulates automated room lighting and an HVAC cooling fan |
+| **Display** | 16x2 Character LCD, Potentiometer | Outputs real-time sensor readings and appliance states (`ON`/`OFF`) |
 
 ---
 
-## Engineering Highlights
-* **Power Isolation:** Separates low-voltage microcontroller logic (5V) from higher-power actuator circuits using dual SPDT relays and an external power supply[cite: 1].
-* **Multi-Sensor Fusion:** Combines analog threshold sensing (temperature and light) with digital event detection (motion) to prevent unnecessary energy consumption[cite: 1].
+## How It Works
+
+1. **Sensing:** The Arduino continuously reads analog signals from the TMP36 and LDR alongside digital triggers from the PIR motion sensor.
+2. **Automation Logic:** 
+   * **Lighting:** Activates the light bulb relay when motion is detected in low-light conditions.
+   * **Cooling:** Activates the DC motor relay when ambient temperature exceeds a set threshold.
+3. **Monitoring:** Updates the 16x2 LCD in real time with current environmental values and active load statuses.
+
+---
+
+## Key Engineering Takeaways
+* **Circuit Isolation:** Safely decouples low-voltage microcontroller logic from external load power using electromechanical relays.
+* **Energy Efficiency:** Automates power delivery based on multi-sensor thresholds rather than manual switching.
+* **Pre-Deployment Validation:** Verified circuit topology, power distribution, and signal routing in simulation prior to hardware assembly.
